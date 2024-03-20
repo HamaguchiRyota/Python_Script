@@ -36,7 +36,10 @@ for drive in c.Win32_LogicalDisk ():
 
 print(drive_list)
 
-dir_path = drive_list[0]
-
-files = os.listdir(dir_path)
-print(files)
+for i in range(3):
+  try:
+    dir_path = drive_list[i]
+    files = os.listdir(dir_path)
+    print(files)
+  except FileNotFoundError:
+    print(dir_path + " には指定されたパスが見つかりませんでした。")  
