@@ -31,7 +31,7 @@ for drive in c.Win32_LogicalDisk ():
     # prints all the drives details including name, type and size
     #print(drive)
     #print (drive.Caption, drive.VolumeName, DRIVE_TYPES[drive.DriveType])
-    drive_list.append(drive.DeviceID + "/Users/" + f'{user}' + "/AppData/Local/Programs/" + "Python")
+    drive_list.append(drive.DeviceID + "/Users/" + f'{user}' + "/AppData/Local/Programs/Python/")
     #print(drive.DeviceID + "/Users/" + f'{user}' + "/AppData/Local/Programs/")
 
 #print(drive_list)
@@ -40,6 +40,12 @@ for i in range(len(drive_list)):
   try:
     dir_path = drive_list[i]
     files = os.listdir(dir_path)
-    print(files)
+    PyVr = [s for s in files if 'Python' in s]
+    print(PyVr)
+    for j in range(len(PyVr)):
+       ly = drive_list[i] + PyVr[j]
+       print (ly)
+    print()   
+
   except FileNotFoundError:
-    print(dir_path + " には指定されたパスが見つかりませんでした。")  
+    print(dir_path + " には指定されたパスが見つかりませんでした。")
