@@ -34,9 +34,9 @@ for drive in c.Win32_LogicalDisk ():
     drive_list.append(drive.DeviceID + "/Users/" + f'{user}' + "/AppData/Local/Programs/" + "Python")
     #print(drive.DeviceID + "/Users/" + f'{user}' + "/AppData/Local/Programs/")
 
-print(drive_list)
+#print(drive_list)
 
-for i in range(3):
+for i in range(len(drive_list)):
   try:
     dir_path = drive_list[i]
     files = os.listdir(dir_path)
