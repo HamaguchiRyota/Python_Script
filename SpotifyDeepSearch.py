@@ -2,10 +2,15 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+from dotenv import load_dotenv
+import os
 
-# Spotify API認証
-CLIENT_ID = "###"
-CLIENT_SECRET = "###"
+# .envファイルの読み込み
+load_dotenv()
+
+CLIENT_ID = os.getenv("CLIENT_ID")
+CLIENT_SECRET = os.getenv("CLIENT_SECRET")
+
 sp = spotipy.Spotify(
     auth_manager=SpotifyClientCredentials(
         client_id=CLIENT_ID, client_secret=CLIENT_SECRET
