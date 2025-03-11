@@ -21,6 +21,10 @@ sp = spotipy.Spotify(
 )
 
 
+def play_track(uri):
+    sp.start_playback(uris=[uri])
+
+
 def search_tracks():
     query = entry_query.get()
     artist = entry_artist.get()
@@ -91,6 +95,9 @@ def show_album_art(event):
         else:
             label_artist_icon.config(image="")  # 画像がない場合はラベルをクリア
 
+        # 再生ボタンの設定
+        play_button.config(command=lambda: play_track(track["uri"]))
+
 
 # UI作成
 root = tk.Tk()
@@ -147,5 +154,8 @@ ttk.Label(frame, text="").grid(row=0, column=3, sticky=tk.W)
 label_artist_icon = tk.Label(frame)
 label_artist_icon.grid(row=6, column=2, padx=10, pady=10)
 
+# 再生ボタンの追加
+play_button = ttk.Button(frame, text="再生")
+play_button.grid(row=7, column=2, padx=10, pady=10)
 
 root.mainloop()
