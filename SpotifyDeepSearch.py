@@ -3,6 +3,7 @@ from tkinter import ttk, messagebox
 from PIL import Image, ImageTk, ImageDraw, ImageOps
 import spotipy
 from spotipy.oauth2 import SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 from dotenv import load_dotenv
 import os
 import requests
@@ -14,9 +15,19 @@ load_dotenv()
 CLIENT_ID = os.getenv("CLIENT_ID")
 CLIENT_SECRET = os.getenv("CLIENT_SECRET")
 
+"""
 sp = spotipy.Spotify(
     auth_manager=SpotifyClientCredentials(
         client_id=CLIENT_ID, client_secret=CLIENT_SECRET
+    )
+)
+"""
+sp = spotipy.Spotify(
+    auth_manager=SpotifyOAuth(
+        client_id=CLIENT_ID,
+        client_secret=CLIENT_SECRET,
+        redirect_uri="http://127.0.0.1:8888/callback",
+        scope="user-modify-playback-state,user-read-playback-state",
     )
 )
 
