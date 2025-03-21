@@ -1,2 +1,2 @@
-# Search-Python-installation-directory
-Pythonのインストール先を検索する
+# Python_Script
+Pythonを使用した何かをまとめる
